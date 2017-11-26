@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Tushar Koshti</Authors>
     <Company>Lazy Man Studios</Company>
@@ -13,6 +13,6 @@
     <RepositoryUrl>https://github.com/07101994/CrossFileHelper</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
     <PackageTags>Xamarin,.NET Standard,Android,IOS,UWP,File Helper,File Utility</PackageTags>
+    <Version>1.0.1</Version>
   </PropertyGroup>
-
 </Project>
