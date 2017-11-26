@@ -2,6 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Tushar Koshti</Authors>
+    <Company>Lazy Man Studios</Company>
+    <Product>.NET Standard library to make easy file access on cross platform devices</Product>
+    <Description>CrossFileHelper helps you to jump start to do file related functions in a quick and easy way.</Description>
+    <Copyright>Copyright Tushar Koshti</Copyright>
+    <PackageProjectUrl>https://github.com/07101994/CrossFileHelper</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/07101994/CrossFileHelper/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/07101994/CrossFileHelper</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageTags>Xamarin,.NET Standard,Android,IOS,UWP,File Helper,File Utility</PackageTags>
   </PropertyGroup>
 
 </Project>
