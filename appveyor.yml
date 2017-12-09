@@ -9,10 +9,6 @@ environment:
     NUGET_APIKEY:
       secure: iR2nxYunwR8NlbHe5TRd0h2CETPfs9QPf6ibViJkjq8=
 configuration: Release
-init:
-  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 build_script:
   - ps: xcopy /s "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\*.*" "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\"
   - ps: .\build.ps1 -verbosity Minimal
-on_finish:
-  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
