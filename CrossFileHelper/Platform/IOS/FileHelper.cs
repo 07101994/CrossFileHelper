@@ -1,13 +1,10 @@
-﻿using System.IO;
+﻿using CrossFileHelper.Abstractions;
+using System.IO;
 using System.Threading.Tasks;
-using CrossFileHelper.Abstractions;
 
-namespace CrossFileHelper.Platform.UWP
+namespace CrossFileHelper.Platform
 {
-	/// <summary>
-	/// File helper implementation for UWP
-	/// </summary>
-	class UWPFileHelper : IFileHelper
+	class FileHelper : IFileHelper
 	{
 		public Task<Stream> GetFileReadStreamAsync(string filePath)
 		{

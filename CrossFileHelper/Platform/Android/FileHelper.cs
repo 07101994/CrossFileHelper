@@ -3,12 +3,12 @@ using CrossFileHelper.Abstractions;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace CrossFileHelper.Platform.Android
+namespace CrossFileHelper.Platform
 {
 	/// <summary>
 	/// File helper implementation for android
 	/// </summary>
-	class AndroidFileHelper : IFileHelper
+	class FileHelper : IFileHelper
 	{
 		public Task<System.IO.Stream> GetFileReadStreamAsync(string filePath)
 		{
