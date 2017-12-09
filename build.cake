@@ -42,12 +42,12 @@ Task("Clean").Does(() =>
     EnsureDirectoryExists(outputDir);
 });
 
-Task("UpdateAppVeyorBuildNumber")
-    .WithCriteria(() => isRunningOnAppVeyor)
-    .Does(() =>
-{
-    AppVeyor.UpdateBuildVersion(versionInfo.FullBuildMetaData);
-});
+#Task("UpdateAppVeyorBuildNumber")
+#    .WithCriteria(() => isRunningOnAppVeyor)
+#    .Does(() =>
+#{
+#    AppVeyor.UpdateBuildVersion(versionInfo.FullBuildMetaData);
+#});
 
 FilePath msBuildPath;
 Task("ResolveBuildTools")
@@ -72,7 +72,7 @@ Task("Restore")
 Task("Build")
     .IsDependentOn("ResolveBuildTools")
     .IsDependentOn("Clean")
-    .IsDependentOn("UpdateAppVeyorBuildNumber")
+#    .IsDependentOn("UpdateAppVeyorBuildNumber")
     .IsDependentOn("Restore")
     .Does(() =>  {
 
