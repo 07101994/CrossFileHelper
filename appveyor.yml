@@ -1,0 +1,13 @@
+version: 1.0.{build}
+branches:
+  only:
+  - develop
+skip_tags: true
+image: Visual Studio 2017
+environment:
+    NUGET_SOURCE: https://ci.appveyor.com/nuget/07101994-46vpdv1so3tq
+    NUGET_APIKEY:
+      secure: iR2nxYunwR8NlbHe5TRd0h2CETPfs9QPf6ibViJkjq8=
+configuration: Release
+build_script:
+  - ps: .\build.ps1 -verbosity Diagnostic
