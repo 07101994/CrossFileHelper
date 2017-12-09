@@ -1,5 +1,6 @@
 ﻿using Android.Media;
 using CrossFileHelper.Abstractions;
+using CrossFileHelper.Platform.Common;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -12,14 +13,12 @@ namespace CrossFileHelper.Platform
 	{
 		public Task<System.IO.Stream> GetFileReadStreamAsync(string filePath)
 		{
-			FileStream fileStream = new FileStream(filePath, FileMode.Open);
-			return Task<System.IO.Stream>.Factory.StartNew(() => fileStream);
+			return FileHelperUtility.Instance.GetFileReadStreamAsync(filePath);
 		}
 
 		public Task<System.IO.Stream> GetFileWriteStreamAsync(string filePath)
 		{
-			FileStream fileStream = new FileStream(filePath, FileMode.Create, FileAccess.ReadWrite, FileShare.None);
-			return Task<System.IO.Stream>.Factory.StartNew(() => fileStream);
+			return FileHelperUtility.Instance.GetFileWriteStreamAsync(filePath);
 		}
 
 		//public async Task<string> PickFileAsync(string mimeType)

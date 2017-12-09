@@ -1,4 +1,5 @@
 ﻿using CrossFileHelper.Abstractions;
+using CrossFileHelper.Platform.Common;
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -9,12 +10,12 @@ namespace CrossFileHelper.Platform
 	{
 		public Task<Stream> GetFileReadStreamAsync(string filePath)
 		{
-			throw new NotImplementedException();
+			return FileHelperUtility.Instance.GetFileReadStreamAsync(filePath);
 		}
 
 		public Task<Stream> GetFileWriteStreamAsync(string filePath)
 		{
-			throw new NotImplementedException();
+			return FileHelperUtility.Instance.GetFileWriteStreamAsync(filePath);
 		}
 	}
 }

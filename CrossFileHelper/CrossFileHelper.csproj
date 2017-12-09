@@ -52,30 +52,30 @@
 		<LanguageTargets>$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets</LanguageTargets>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(TargetFramework)' == 'Xamarin.Mac20'">
-		
-	<!-- We must pick a single RID for desktop in order to consume native libraries. -->
-	
+
+		<!-- We must pick a single RID for desktop in order to consume native libraries. -->
+
 		<TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
 		<TargetFrameworkIdentifier>Xamarin.Mac</TargetFrameworkIdentifier>
 	</PropertyGroup>
 
-		<PropertyGroup Condition="'$(TargetFramework)' == 'Xamarin.TVOS10'">
-		
-	<!-- We must pick a single RID for desktop in order to consume native libraries. -->
-	
+	<PropertyGroup Condition="'$(TargetFramework)' == 'Xamarin.TVOS10'">
+
+		<!-- We must pick a single RID for desktop in order to consume native libraries. -->
+
 		<TargetFrameworkVersion>v1.0</TargetFrameworkVersion>
 		<TargetFrameworkIdentifier>Xamarin.TVOS</TargetFrameworkIdentifier>
 	</PropertyGroup>
 
-	
-		<PropertyGroup Condition="'$(TargetFramework)' == 'Xamarin.WatchOS10'">
-		
-	<!-- We must pick a single RID for desktop in order to consume native libraries. -->
-	
+
+	<PropertyGroup Condition="'$(TargetFramework)' == 'Xamarin.WatchOS10'">
+
+		<!-- We must pick a single RID for desktop in order to consume native libraries. -->
+
 		<TargetFrameworkVersion>v1.0</TargetFrameworkVersion>
 		<TargetFrameworkIdentifier>Xamarin.WatchOS</TargetFrameworkIdentifier>
 	</PropertyGroup>
-	
+
 	<ItemGroup>
 		<!--<Compile Include="**\*.cs" />-->
 		<EmbeddedResource Include="**\*.resx" />
@@ -89,7 +89,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Platform\NetStandard\FileHelper.cs" />
+		<None Remove="Platform\NetStandard\FileHelper.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -100,12 +100,14 @@
 	</ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
-		<Compile Include="Platform\Netstandard\**\*.cs" />
+	<Compile Include="Platform\Common\**\*.cs" />	
+	<Compile Include="Platform\Netstandard\**\*.cs" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net462'">
 		<Compile Include="Platform\NetFramework\**\*.cs" />
 		<PackageReference Include="System.Console" Version="4.3.0" />
+		<Compile Include="Platform\Common\**\*.cs" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)'!='netstandard2.0'">
@@ -120,30 +122,35 @@
 		<PackageReference Include="System.Reflection.Extensions" Version="4.3.0" />
 		<PackageReference Include="System.Dynamic.Runtime" Version="4.3.0" />
 		<PackageReference Include="System.Diagnostics.TraceSource" Version="4.3.0" />
+		<Compile Include="Platform\Common\**\*.cs" />
 	</ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'Xamarin.iOS10' ">
 		<Compile Include="Platform\Apple-common\**\*.cs" />
 		<Compile Include="Platform\Ios\**\*.cs" />
 		<Compile Include="Platform\Xamarin-common\**\*.cs" />
+		<Compile Include="Platform\Common\**\*.cs" />
 	</ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'Xamarin.Mac20' ">
 		<Compile Include="Platform\Apple-common\**\*.cs" />
 		<Compile Include="Platform\Mac\**\*.cs" />
 		<Compile Include="Platform\Xamarin-common\**\*.cs" />
+		<Compile Include="Platform\Common\**\*.cs" />
 	</ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'Xamarin.TVOS10' ">
 		<Compile Include="Platform\Apple-common\**\*.cs" />
 		<Compile Include="Platform\Tvos\**\*.cs" />
 		<Compile Include="Platform\Xamarin-common\**\*.cs" />
+		<Compile Include="Platform\Common\**\*.cs" />
 	</ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'Xamarin.WatchOS10' ">
 		<Compile Include="Platform\Apple-common\**\*.cs" />
 		<Compile Include="Platform\Watchos\**\*.cs" />
 		<Compile Include="Platform\Xamarin-common\**\*.cs" />
+		<Compile Include="Platform\Common\**\*.cs" />
 	</ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'MonoAndroid70' ">
@@ -151,10 +158,12 @@
 		<Compile Include="Platform\Android\**\*.cs" />
 		<Compile Include="Platform\Xamarin-common\**\*.cs" />
 		<AndroidResource Include="Resources\**\*.xml" SubType="Designer" Generator="MSBuild:UpdateAndroidResources" />
+		<Compile Include="Platform\Common\**\*.cs" />
 	</ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
 		<Compile Include="Platform\Netcore\**\*.cs" />
+		<Compile Include="Platform\Common\**\*.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -162,7 +171,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Platform\Mac\" />
+		<Folder Include="Platform\Mac\" />
+		<Folder Include="Platform\Common\" />
 	</ItemGroup>
 
 	<Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />

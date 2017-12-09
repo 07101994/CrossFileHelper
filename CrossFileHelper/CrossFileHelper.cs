@@ -11,6 +11,8 @@ namespace CrossFileHelper
 	{
 		static Lazy<IFileHelper> implementation = new Lazy<IFileHelper>(() => CreateFileHelper(), System.Threading.LazyThreadSafetyMode.PublicationOnly);
 
+		private CrossFileHelper() { }
+
 		/// <summary>
 		/// Gets if the plugin is supported on the current platform.
 		/// </summary>
