@@ -1,5 +1,5 @@
 ﻿using CrossFileHelper.Abstractions;
-using CrossFileHelper.Android;
+using CrossFileHelper.Platform;
 using System;
 
 namespace CrossFileHelper
@@ -8,8 +8,10 @@ namespace CrossFileHelper
 	/// Cross platform file helper
 	/// </summary>
 	public class CrossFileHelper
-    {
+	{
 		static Lazy<IFileHelper> implementation = new Lazy<IFileHelper>(() => CreateFileHelper(), System.Threading.LazyThreadSafetyMode.PublicationOnly);
+
+		private CrossFileHelper() { }
 
 		/// <summary>
 		/// Gets if the plugin is supported on the current platform.
@@ -38,9 +40,7 @@ namespace CrossFileHelper
 		/// <returns>IFileHelper</returns>
 		static IFileHelper CreateFileHelper()
 		{
-#if true
 			return new FileHelper();
-#endif
 		}
 
 		internal static Exception NotImplementedInReferenceAssembly() =>

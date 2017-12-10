@@ -1,8 +1,9 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
 using CrossFileHelper.Abstractions;
+using CrossFileHelper.Platform.Common;
 
-namespace CrossFileHelper.UWP
+namespace CrossFileHelper.Platform
 {
 	/// <summary>
 	/// File helper implementation for UWP
@@ -11,14 +12,12 @@ namespace CrossFileHelper.UWP
 	{
 		public Task<Stream> GetFileReadStreamAsync(string filePath)
 		{
-			FileStream fileStream = new FileStream(filePath, FileMode.Open);
-			return Task<Stream>.Factory.StartNew(() => fileStream);
+			return FileHelperUtility.Instance.GetFileReadStreamAsync(filePath);
 		}
 
 		public Task<Stream> GetFileWriteStreamAsync(string filePath)
 		{
-			FileStream fileStream = new FileStream(filePath, FileMode.Create, FileAccess.ReadWrite, FileShare.None);
-			return Task<Stream>.Factory.StartNew(() => fileStream);
+			return FileHelperUtility.Instance.GetFileWriteStreamAsync(filePath);
 		}
 	}
 }
