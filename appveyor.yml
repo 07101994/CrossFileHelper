@@ -10,7 +10,6 @@ environment:
       secure: iR2nxYunwR8NlbHe5TRd0h2CETPfs9QPf6ibViJkjq8=
 configuration: Release
 nuget:
-  account_feed: true
   project_feed: true
 build_script:
   - ps: xcopy /s "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\*.*" "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\"
