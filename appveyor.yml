@@ -17,6 +17,6 @@ artifacts:
   name: Nuget package
 deploy:
 - provider: NuGet
-  server: https://ci.appveyor.com/nuget/07101994-46vpdv1so3tq
+  server: https://ci.appveyor.com/nuget/crossfilehelper-3sk0amb6dwdk
   api_key:
-    secure: iR2nxYunwR8NlbHe5TRd0h2CETPfs9QPf6ibViJkjq8=  
+    secure: YaR8aR3ycKdIk+wDipphzQMBVsrXOavBYqs1h4dZKbU= 
