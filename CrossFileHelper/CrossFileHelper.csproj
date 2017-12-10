@@ -16,7 +16,7 @@
 		<RepositoryUrl>https://github.com/07101994/CrossFileHelper</RepositoryUrl>
 		<RepositoryType>GitHub</RepositoryType>
 		<PackageTags>Xamarin,.NET Standard,Android,IOS,UWP,File Helper,File Utility</PackageTags>
-		<Version>1.0.1</Version>
+		<Version>1.0.23</Version>
 	</PropertyGroup>
 
 	<!--<PropertyGroup>
