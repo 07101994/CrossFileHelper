@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using CrossFileHelper.Entities;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace CrossFileHelper.Abstractions
@@ -21,5 +22,11 @@ namespace CrossFileHelper.Abstractions
 		/// <param name="filePath">Path of file to read</param>
 		/// <returns>Stream</returns>
 		Task<Stream> GetFileReadStreamAsync(string filePath);
-    }
+
+		/// <summary>
+		/// Pick file from storage
+		/// </summary>
+		/// <returns>FileData</returns>
+		Task<FileData> PickFile();
+	}
 }

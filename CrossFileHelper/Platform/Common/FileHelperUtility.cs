@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace CrossFileHelper.Platform.Common
 {
-	public class FileHelperUtility
+	class FileHelperUtility
     {
 		private FileHelperUtility() { }
 

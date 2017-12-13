@@ -16,7 +16,7 @@
 		<RepositoryUrl>https://github.com/07101994/CrossFileHelper</RepositoryUrl>
 		<RepositoryType>GitHub</RepositoryType>
 		<PackageTags>Xamarin,.NET Standard,Android,IOS,UWP,File Helper,File Utility</PackageTags>
-		<Version>1.0.23</Version>
+		<Version>1.1.0</Version>
 	</PropertyGroup>
 
 	<!--<PropertyGroup>
@@ -95,9 +95,6 @@
 	<ItemGroup>
 		<Compile Include="Abstractions\IFileHelper.cs" />
 	</ItemGroup>
-	<ItemGroup>
-		<PackageReference Include="Microsoft.CSharp" Version="4.4.0" />
-	</ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
 	<Compile Include="Platform\Common\**\*.cs" />	
@@ -155,6 +152,7 @@
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'MonoAndroid70' ">
 		<Reference Include="Mono.Android" />
+		<Reference Include="System.Runtime"></Reference>
 		<Compile Include="Platform\Android\**\*.cs" />
 		<Compile Include="Platform\Xamarin-common\**\*.cs" />
 		<AndroidResource Include="Resources\**\*.xml" SubType="Designer" Generator="MSBuild:UpdateAndroidResources" />
@@ -173,6 +171,16 @@
 	<ItemGroup>
 		<Folder Include="Platform\Mac\" />
 		<Folder Include="Platform\Common\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.CSharp" Version="4.4.1" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'uap10.0'">
+	  <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+	    <Version>6.0.5</Version>
+	  </PackageReference>
 	</ItemGroup>
 
 	<Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
