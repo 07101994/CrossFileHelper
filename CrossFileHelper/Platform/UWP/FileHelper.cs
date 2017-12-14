@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using CrossFileHelper.Abstractions;
 using CrossFileHelper.Entities;
-using CrossFileHelper.Platform.Common;
 using Windows.Storage.AccessCache;
 using System;
+using Windows.Storage;
 
 namespace CrossFileHelper.Platform
 {
@@ -13,14 +13,18 @@ namespace CrossFileHelper.Platform
 	/// </summary>
 	class FileHelper : IFileHelper
 	{
-		public Task<Stream> GetFileReadStreamAsync(string filePath)
+		public async Task<Stream> GetFileReadStreamAsync(string filePath)
 		{
-			return FileHelperUtility.Instance.GetFileReadStreamAsync(filePath);
+			StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+			StorageFile sampleFile = await storageFolder.GetFileAsync(filePath);
+			return await sampleFile.OpenStreamForReadAsync();
 		}
 
-		public Task<Stream> GetFileWriteStreamAsync(string filePath)
+		public async Task<Stream> GetFileWriteStreamAsync(string filePath)
 		{
-			return FileHelperUtility.Instance.GetFileWriteStreamAsync(filePath);
+			StorageFolder localFolder = ApplicationData.Current.LocalFolder;
+			StorageFile saveFile = await localFolder.CreateFileAsync(filePath, CreationCollisionOption.ReplaceExisting);
+			return await saveFile.OpenStreamForWriteAsync();
 		}
 
 		public async Task<FileData> PickFile()
