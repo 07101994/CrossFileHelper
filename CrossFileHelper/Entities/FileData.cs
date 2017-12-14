@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace CrossFileHelper.Entities
 {
@@ -13,16 +14,18 @@ namespace CrossFileHelper.Entities
 		private bool _isDisposed;
 		private readonly Action<bool> _dispose;
 		private readonly Func<Stream> _streamGetter;
+		private Stream _fileStream;
 
 		public FileData()
 		{ }
 
-		public FileData(string filePath, string fileName, Func<Stream> streamGetter, Action<bool> dispose = null)
+		public FileData(string filePath, string fileName, Func<Stream> streamGetter, Action<bool> dispose = null, Stream stream = null)
 		{
 			_filePath = filePath;
 			_fileName = fileName;
 			_dispose = dispose;
 			_streamGetter = streamGetter;
+			_fileStream = stream;
 		}
 
 		public byte[] DataArray
@@ -89,6 +92,11 @@ namespace CrossFileHelper.Entities
 		/// <returns></returns>
 		public Stream GetStream()
 		{
+			if (_fileStream != null)
+			{
+				return _fileStream;
+			}
+
 			if (_isDisposed)
 				throw new ObjectDisposedException(null);
 
