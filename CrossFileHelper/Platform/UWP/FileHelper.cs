@@ -41,7 +41,7 @@ namespace CrossFileHelper.Platform
 				return null;
 
 			StorageApplicationPermissions.FutureAccessList.Add(file);
-			return new FileData(file.Path, file.Name, () => File.OpenRead(file.Path));
+			return new FileData(file.Path, file.Name, () => File.OpenRead(file.Path), null, await file.OpenStreamForReadAsync());
 		}
 	}
 }
