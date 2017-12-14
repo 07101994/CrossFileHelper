@@ -16,7 +16,7 @@
 		<RepositoryUrl>https://github.com/07101994/CrossFileHelper</RepositoryUrl>
 		<RepositoryType>GitHub</RepositoryType>
 		<PackageTags>Xamarin,.NET Standard,Android,IOS,UWP,File Helper,File Utility</PackageTags>
-		<Version>1.1.0</Version>
+		<Version>1.1.1</Version>
 	</PropertyGroup>
 
 	<!--<PropertyGroup>
@@ -103,7 +103,7 @@
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net462'">
 		<Compile Include="Platform\NetFramework\**\*.cs" />
-		<PackageReference Include="System.Console" Version="4.3.0" />
+		<!--<PackageReference Include="System.Console" Version="4.3.0" />-->
 		<Compile Include="Platform\Common\**\*.cs" />
 	</ItemGroup>
 
@@ -114,11 +114,11 @@
 	<ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0' ">
 		<Compile Include="Platform\Windows-common\**\*.cs" />
 		<Compile Include="Platform\UWP\**\*.cs" />
-		<PackageReference Include="System.Reflection" Version="4.3.0" />
+		<!--<PackageReference Include="System.Reflection" Version="4.3.0" />
 		<PackageReference Include="System.Reflection.TypeExtensions" Version="4.4.0" />
 		<PackageReference Include="System.Reflection.Extensions" Version="4.3.0" />
 		<PackageReference Include="System.Dynamic.Runtime" Version="4.3.0" />
-		<PackageReference Include="System.Diagnostics.TraceSource" Version="4.3.0" />
+		<PackageReference Include="System.Diagnostics.TraceSource" Version="4.3.0" />-->
 		<Compile Include="Platform\Common\**\*.cs" />
 	</ItemGroup>
 
@@ -171,10 +171,6 @@
 	<ItemGroup>
 		<Folder Include="Platform\Mac\" />
 		<Folder Include="Platform\Common\" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <PackageReference Include="Microsoft.CSharp" Version="4.4.1" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'uap10.0'">
