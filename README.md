@@ -7,6 +7,8 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/w9ydit1c82kfgnhn/branch/master?svg=true)](https://ci.appveyor.com/project/07101994/crossfilehelper/branch/master)
 
+[![NuGet](https://img.shields.io/nuget/v/CrossFileHelper.svg)](https://www.nuget.org/packages/CrossFileHelper)
+
 # Contribution
 All Pull Request are welcome.
 
