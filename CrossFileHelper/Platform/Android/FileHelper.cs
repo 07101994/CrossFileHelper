@@ -8,6 +8,9 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using AndroidRuntime = Android.Runtime;
+using AndroidNet = Android.Net;
+using System.IO;
+using Java.IO;
 
 namespace CrossFileHelper.Platform
 {
@@ -71,13 +74,24 @@ namespace CrossFileHelper.Platform
 			EventHandler<FilePickerEventArgs> handler = null;
 			EventHandler<EventArgs> cancelledHandler = null;
 
-			handler = (s, e) =>
+			handler = async (s, e) =>
 			{
 				var tcs = Interlocked.Exchange(ref _completionSource, null);
 
 				FilePickerActivity.FilePicked -= handler;
 
-				tcs?.SetResult(new FileData(e.FilePath, e.FileName, () => System.IO.File.OpenRead(e.FilePath)));
+				Stream fileStream = null;
+				if (!string.IsNullOrWhiteSpace(e.FilePath))
+				{
+					using (AndroidRuntime.InputStreamInvoker inputStreamInvoker = (AndroidRuntime.InputStreamInvoker)_context.ContentResolver.OpenInputStream(AndroidNet.Uri.Parse(e.FilePath)))
+					{
+						byte[] array = await ReadBytes(inputStreamInvoker.BaseInputStream);
+
+						fileStream = new MemoryStream(array);
+					}
+				}
+
+				tcs?.SetResult(new FileData(e.FilePath, e.FileName, () => fileStream));
 			};
 
 			cancelledHandler = (s, e) =>
@@ -94,6 +108,20 @@ namespace CrossFileHelper.Platform
 
 
 			return _completionSource.Task;
+		}
+		
+		public async Task<byte[]> ReadBytes(InputStream inputStream)
+		{
+			byte[] buffer = new byte[16 * 1024];
+			using (MemoryStream ms = new MemoryStream())
+			{
+				int read;
+				while ((read = await inputStream.ReadAsync(buffer, 0, buffer.Length)) > 0)
+				{
+					await ms.WriteAsync(buffer, 0, read);
+				}
+				return ms.ToArray();
+			}
 		}
 	}
 }
